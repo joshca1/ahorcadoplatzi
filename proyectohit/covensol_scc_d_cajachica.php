@@ -12,9 +12,7 @@ if(!array_key_exists("la_logusr",$_SESSION))
 
 require_once("clases/covensol_scc_c_cajachica.php");
 $objscc=new covensol_scc_c_cajachica('');
-
-// CAÑIZALES SE CAMBIA EL PHP PARA QUE VALIDE LA SEGURIDAD DEL MOVIMIENTO Y NO EL DE FORMULARIO DE CREACION DE LA CAJA CHICA
-$objscc->cargar_seguridad("SCC","covensol_scc_d_movimiento.php");
+$objscc->cargar_seguridad("SCC","covensol_scc_d_cajachica.php");
 $datos=array();
 $disable = "";
 

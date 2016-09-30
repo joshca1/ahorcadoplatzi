@@ -12,9 +12,8 @@ function buscar(catalogo){
 			window.open('covensol_scc_cat_ctasscg.php?obj=txtsc_cuenta','','toolbar=no,directories=no,location=no, width=900, height=300, scrollbars=yes, top=0, left=0, estatus=no')
 		break;
 		
-		case 'beneficiario':
-		//CAÑIZALES COMENTAR EL IF PARA Q PUEDA ABRIR LA BUSQUEDA	
-           // if(f.hcodcaj.value!=""){return;}		
+		case 'beneficiario':	
+            if(f.hcodcaj.value!=""){return;}		
 			window.open('covensol_scc_cat_beneficiarios.php','','toolbar=no,directories=no,location=no, width=900, height=300, scrollbars=yes, top=0, left=0, estatus=no')
 		break;
 		

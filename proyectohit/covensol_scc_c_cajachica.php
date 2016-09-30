@@ -1302,13 +1302,11 @@ class covensol_scc_c_cajachica {
 				$this->io_conexiones->mensajes_ajax($mensaje);																	
 				return false;
 			}			
-			// CAÑIZALES
+			
 		   $ls_sql = "  UPDATE scc_cajachica
-						 SET dencaj='".$datos['dencaj']."',
-						   ced_bene='".$datos['ced_bene']."'
+						 SET dencaj='".$datos['dencaj']."'						  
 					   WHERE codemp ='".$this->ls_codemp."'  
 						 AND codcaj ='".$datos['codcaj']."'";
-						
 		
 						
 			$rs_data=$this->io_sql->select($ls_sql);			
@@ -1913,8 +1911,6 @@ class covensol_scc_c_cajachica {
 			$param['imprimir'] = '1';	
 			$msj = '<b>CLASE:</b> '.$clase.' <br><b>METODO:</b> '.$metodo;	
 			$respuesta = $this->io_conexiones->conexion($query_rs,$param,$msj);	
-			echo $respuesta;
-			exit();
 			return $respuesta;
 	
 	}
@@ -2254,7 +2250,7 @@ class covensol_scc_c_cajachica {
 				$this->io_mensajes->message($mensaje);
 				return false;				
 			}
-			//echo $ls_sql;
+			echo $ls_sql;
 			$fecmov = $rs_data->fields['fecha'];
 			
 			$resp = $this->io_fecha->uf_comparar_fecha($fecmov,$datos['fecha']);
@@ -3028,7 +3024,7 @@ class covensol_scc_c_cajachica {
 			
 			
 			$ls_sql =   "   
-							SELECT distinct spg.spg_cuenta,mc.estcla,mc.codestpro1,mc.codestpro2,mc.codestpro3,
+							SELECT spg.spg_cuenta,mc.estcla,mc.codestpro1,mc.codestpro2,mc.codestpro3,
 								   mc.codestpro4,mc.codestpro5, sum(mc.monto) AS monto
 							FROM scc_dt_reposiciones dtr
 							INNER JOIN scc_mov_caja mc ON mc.codmov = dtr.codmovdet
@@ -3096,11 +3092,9 @@ class covensol_scc_c_cajachica {
 							INNER JOIN scg_cuentas scg ON scg.sc_cuenta = spg.sc_cuenta                  
 							WHERE  mc.codcaj = '".$this->codcaj."'
 							AND dtr.codrep = '".$this->codrep."'
-							AND scg.codemp='".$this->ls_codemp."' 
 							GROUP BY spg.sc_cuenta
 							ORDER BY spg.sc_cuenta			           
 						 ";
-						 
 			
 			$rs_data=$this->io_sql->select($ls_sql);	
 			if($rs_data==false){				
